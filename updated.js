@@ -210,7 +210,7 @@ function handleNextButton(){
     if(currentQuestionIndex < questions.length){
         showQuestion();
     } else{
-        if(incorrectAnswers >= 3) {
+        if(incorrectAnswers === 3) {
             showGameOver();  // Function to show game over message
         } else {
             showScore();
