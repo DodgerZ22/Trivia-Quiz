@@ -210,7 +210,7 @@ function handleNextButton(){
     if(currentQuestionIndex < questions.length){
         showQuestion();
     } else{
-        if(incorrectAnswers === 3) {
+        if(incorrectAnswers >= 3) {
             showGameOver();  // Function to show game over message
         } else {
             showScore();
@@ -223,6 +223,7 @@ function showGameOver(){
     questionElement.innerHTML = 'Game Over! You scored too many questions incorrectly.'
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
+    incorrectAnswers = 0;
 }
   
   

@@ -18,3 +18,7 @@
 .correct{
     background: #9aeb9a;
 }
+
+.incorrect{
+    background: red;
+}
