@@ -1,7 +1,7 @@
 const questions = [
     {
         question: "What is the capital of California?",
-        type: 'text',
+        type: 'multiple choice',
         answers: [
             {text: "Eureka", correct: false},
             {text: `Sacramento`, correct: true},
@@ -69,8 +69,36 @@ const questions = [
             {text: "Patrick Mahomes", correct: false},
         ]
     },
-    
-   
+    {
+        question: "Which MLB team has won the most World Series Championships?",
+        type: 'multiple choice',
+        answers: [
+            {text: "The Dodgers", correct: false},
+            {text: "The Cardinals", correct: false},
+            {text: "The Yankees", correct: true},
+            {text: "The Giants", correct: false},
+        ]
+    },
+    {
+        question: "How many points are scored for a perfect game in bowling?",
+        type: 'multiple choice',
+        answers: [
+            {text: "500", correct: false},
+            {text: "350", correct: false},
+            {text: "270", correct: false},
+            {text: "300", correct: true},
+        ]
+    },
+    {
+        question: "What does ES6 stand for?",
+        type: 'multiple choice',
+        answers: [
+            {text: "Enlightenment Script 6", correct: false},
+            {text: "ECMAScript6", correct: true},
+            {text: "It has no meaning", correct: false},
+            {text: "Encryption Script 6", correct: false},
+        ]
+    },
 
 ];
 
@@ -104,36 +132,7 @@ function showQuestion(){
             button.dataset.correct = answer.correct;
         }
         button.addEventListener("click",selectAnswer);
-    });
-} 
-
-/*function showQuestion(){
-    resetState();
-
-    const question = questions[currentQuestionIndex];
-    questionElement.innerText = question.question;
-
-    if(question.type === 'text') {
-        const answerInput = document.createElement('input');
-        answerInput.type = 'text';
-        answerInput.classList.add('answer');
-        answerContainer.appendChild(answerInput);
-    } else {
-        question.answers.forEach(answer => {
-            const answerButton = document.createElement('button');
-            answerButton.innerText = answer.text;
-            answerButton.classList.add('answer');
-            if(answer.correct){
-                answerButton.dataset.correct = answer.correct;
-            }
-            answerButton.addEventListener('click', selectAnswer);
-            answerContainer.appendChild(answerButton);
-        });
-    }
-
-    nextButton.style.display = 'none';
-} */
-
+    });}
 
 function resetState(){
     nextButton.style.display = "none";
@@ -161,49 +160,13 @@ function resetState(){
     nextButton.style.display = "block";
 } 
 
-/*function selectAnswer(e){
-    const selectedBtn = e.target;
-    const isCorrect = selectedBtn.dataset.correct === 'true';
-
-    if(isCorrect){
-        selectedBtn.classList.add('correct');
-        score++;
-    } else if (questions[currentQuestionIndex].type === 'text') {
-        const userAnswer = document.querySelector('.answer').value.trim();
-        const correctAnswer = questions[currentQuestionIndex].answer;
-        
-        if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-            selectedBtn.classList.add('correct');
-            score++;
-        } else {
-            selectedBtn.classList.add('incorrect');
-            incorrectAnswers++;
-        }
- 
-     } else {
-        selectedBtn.classList.add('incorrect');
-        incorrectAnswers++;
-    }
-
-    // Rest of the code...
-} */
-
-
 function showScore(){
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
-}
+} 
 
-/*function handleNextButton(){
-    currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
-        showQuestion();
-    } else{
-        showScore();
-    }
-}*/
 
 function handleNextButton(){
     currentQuestionIndex++;
@@ -225,11 +188,7 @@ function showGameOver(){
     nextButton.style.display = "block";
     incorrectAnswers = 0;
 }
-  
-  
-
-
-
+   
 nextButton.addEventListener("click",()=>{
     if(currentQuestionIndex < questions.length){
         handleNextButton();
@@ -237,7 +196,5 @@ nextButton.addEventListener("click",()=>{
         startQuiz();
     }
 })
-
-
 
 startQuiz();
